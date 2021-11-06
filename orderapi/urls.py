@@ -31,6 +31,7 @@ urlpatterns = [
     path('delete-order/<str:pk>/', views.deleteOrder, name="delete-order"),
 
     path('cust-contacted/', views.customerContacted, name="cust-contacted"),
+    path('contacted/', views.contacted, name="contacted"),
     # path('swagger(?P<format>\.json|\.yaml)/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger-json/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     # path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),

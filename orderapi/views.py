@@ -2,7 +2,7 @@ from django.http.response import JsonResponse
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Order
+from .models import Order, Contacted
 from .serializers import ContactedSerializer, OrderSerializer
 import requests
 
@@ -55,6 +55,12 @@ def customerContacted(request):
     serializer = ContactedSerializer(data = request.data)
     if serializer.is_valid():
         serializer.save()
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def contacted(request):
+    orderlist = Contacted.objects.all()
+    serializer = ContactedSerializer(orderlist, many=True)
     return Response(serializer.data)
 
 @api_view(['POST'])
