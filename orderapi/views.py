@@ -16,6 +16,7 @@ def orderapi(request):
 
     orderapi_urls  = {
         'View Orders' : '/order-lists/',
+        'View Latest Order' : '/new-order/',
         'View Specific Order' : '/order-detail/<str:pk>',
         'Create Order' : '/create-order/',
         'Update Order' : '/update-order/<str:pk>',
