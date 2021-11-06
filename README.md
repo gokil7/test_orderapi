@@ -15,11 +15,10 @@ API Heroku Deployment link - <a href="https://test-order-api.herokuapp.com/" tar
 Zapier link - <a href="https://zapier.com/shared/5fe385985fbfa3434afa7f5ddcf7a1ec0f683413">Here</a>
 
 For the zapier flow, I'm using /new-order/ endpoint to retrieve the latest order made and then using the data(email) from the get request, I'm sending a mail of 
-Order Confirmation to the customer.(Using Email with Zapier, because Gmail repeatedly send mail to the same mail address, even when mail address were different from the GET request). 
-
+Order Confirmation to the customer.(Using Email with Zapier, because Gmail repeatedly send mail to the same mail address, even when mail address were different from the GET request).
 
 And after sending mail, using a POST request, I'm updating /cust-contacted/ endpoint giving relevant data and marking "contacted" key as True.
-
+Temporarily, I'm triggering zapier from a GET request in /create-order/ endpoint.
 
 
 
