@@ -3,10 +3,8 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Order
-from rest_framework.views import APIView
 from .serializers import ContactedSerializer, OrderSerializer
-from django.db.models import Max
-
+import requests
 
 # Create your views here.
 
@@ -45,6 +43,8 @@ def newOrder(request):
 
 @api_view(['POST'])
 def createOrder(request):
+    url = "https://hooks.zapier.com/hooks/catch/11240506/bdood4m/silent/"
+    r = requests.get(url)
     serializer = OrderSerializer(data = request.data)
     if serializer.is_valid():
         serializer.save()
