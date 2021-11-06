@@ -11,3 +11,11 @@ class Order(models.Model):
 
     def __str__(self):
         return self.order_name
+
+class Contacted(models.Model):
+    customerName = models.CharField(max_length=50)
+    order = models.CharField(max_length=50)
+    contacted = models.BooleanField()
+
+    def __str__(self):
+        return self.order

@@ -4,7 +4,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Order
 from rest_framework.views import APIView
-from .serializers import OrderSerializer
+from .serializers import ContactedSerializer, OrderSerializer
+from django.db.models import Max
 
 
 # Create your views here.
@@ -35,12 +36,24 @@ def orderDetails(request, pk):
     serializer = OrderSerializer(orderlist, many=False)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def newOrder(request):
+    orderlist = Order.objects.filter().order_by("-id")[0]
+    serializer = OrderSerializer(orderlist, many=False)
+    return Response(serializer.data)
+
 @api_view(['POST'])
 def createOrder(request):
     serializer = OrderSerializer(data = request.data)
     if serializer.is_valid():
         serializer.save()
+    return Response(serializer.data)
 
+@api_view(['POST'])
+def customerContacted(request):
+    serializer = ContactedSerializer(data = request.data)
+    if serializer.is_valid():
+        serializer.save()
     return Response(serializer.data)
 
 @api_view(['POST'])
