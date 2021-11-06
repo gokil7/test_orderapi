@@ -7,7 +7,7 @@ class Order(models.Model):
     amount = models.IntegerField()
     cust_name = models.CharField(max_length=50)
     address = models.TextField()
-    contact = models.CharField()
+    contact = models.CharField(max_length=70)
 
     def __str__(self):
         return self.order_name
